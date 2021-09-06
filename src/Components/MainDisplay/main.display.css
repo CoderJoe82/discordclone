@@ -1,0 +1,12 @@
+#displaySpot {
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    margin: auto;
+    width: 65%;
+    height: 80%;
+    background-color: rgb(0, 44, 80);
+    border-radius: 40px;
+}

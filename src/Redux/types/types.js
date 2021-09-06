@@ -1,0 +1,1 @@
+export const SET_SUBMIT_POST = 'SET_SUBMIT_POST'
