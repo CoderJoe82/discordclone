@@ -18,10 +18,18 @@ class PostText extends Component {
   };
 
   handleSubmitPostText = () => {
-    this.props.dispatch({
-      type: SET_SUBMIT_POST,
-      payload: this.state.inputValue,
-    });
+    if (this.props.posts.length > 15) {
+      this.props.posts.shift();
+      this.props.dispatch({
+        type: SET_SUBMIT_POST,
+        payload: this.state.inputValue,
+      });
+    } else {
+      this.props.dispatch({
+        type: SET_SUBMIT_POST,
+        payload: this.state.inputValue,
+      });
+    }
 
     const textInput = document.getElementById("submitTextSpot");
 
