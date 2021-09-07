@@ -1,21 +1,32 @@
 import "./post.text.css";
 import React, { Component } from "react";
 import { connect } from "react-redux";
+import { SET_SUBMIT_POST } from "../../Redux/types/types";
 
 class PostText extends Component {
+  constructor(props) {
+    super(props);
+    this.state = {
+      inputValue: "",
+    };
+  }
 
-    constructor(props) {
-        super(props);
-        this.state = {
-            inputValue: ''
-        }
-    }
+  handleChange = (e) => {
+    this.setState({
+      inputValue: e.target.value,
+    });
+  };
 
-    handleChange = (e) => {
-        this.setState({
-            inputValue: e.target.value
-        })
-    }
+  handleSubmitPostText = () => {
+    this.props.dispatch({
+      type: SET_SUBMIT_POST,
+      payload: this.state.inputValue,
+    });
+
+    const textInput = document.getElementById("submitTextSpot");
+
+    textInput.value = "";
+  };
 
   render() {
     return (
@@ -25,9 +36,11 @@ class PostText extends Component {
           id="submitTextSpot"
           maxLength="100"
           placeholder="Type your message here..."
-          onChange = {this.handleChange}
+          onChange={this.handleChange}
         />
-        <button id="submitChatButton">Submit</button>
+        <button id="submitChatButton" onClick={this.handleSubmitPostText}>
+          Submit
+        </button>
       </div>
     );
   }

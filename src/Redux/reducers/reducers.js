@@ -10,7 +10,7 @@ const rootReducer = (state = initialState, action) => {
         case SET_SUBMIT_POST: {
             return {
                 ...state,
-                posts: state.posts.push(action.payload)
+                posts: [...state.posts, action.payload]
             }
         }
         default:
